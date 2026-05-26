@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+
+# VS Code
+.vscode/
+
+# Data files (raw data should not be in Git)
+data/
+*.csv
+*.xlsx
+
+# Ignore config file with sensitive info
+config.yaml
+
+# output files
+output/
+!output_masked/
