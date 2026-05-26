@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, text, URL
 import yaml
+import pandas as pd
 
 
 
@@ -11,60 +12,44 @@ DATABASES = CONFIG["DATABASES"]
 QUERIES = CONFIG["QUERIES"]
 
 
-def create_url(db_config):
+def create_url(db_name, db_config):
     connection_url = URL.create(
-        drivername= DATABASES["am"]["drivername"],
-        host= DATABASES["am"]["host"],
-        database= DATABASES["am"]["database"],
-        query= DATABASES["am"]["query"]
+        drivername= db_config["drivername"],
+        host= db_config["host"],
+        database= db_config["database"],
+        query= db_config["query"]
     )
 
     return connection_url
 
-
-def build_engine(connection_url):
+# https://docs.sqlalchemy.org/en/20/tutorial/engine.html#tutorial-engine
+def get_engine(connection_url):
     engine = create_engine(connection_url)
     return engine
 
+
+def get_data():
     
+    raw_data = {}
+    for db_name, db_config in DATABASES.items():
+        connection_url = create_url(db_name, db_config)
+        
+        for key, sql_query in QUERIES[db_name].items():
+            engine = get_engine(connection_url)
+
+            with engine.connect() as conn:
+                raw_data[key] = pd.read_sql(sql_query, conn)
+                print(raw_data[key])
+
+
+    return raw_data
 
 
 def extract():
 
-    for db_name, db_config in DATABASES.items():
-        connection_url = create_url(db_config)
-        for key, sql_query in QUERIES[db_name].items():
-            engine = build_engine(connection_url)
-            
-            with engine.connect() as conn:
-                result = conn.execute(text(sql_query))
-                raw_data = result.fetchall()
+     raw_data = get_data()
 
-            return raw_data
-       
+
+     return raw_data
+
 extract()
-
-# DATABASES: 
-#   am:
-#     # SQLAlchemy
-#     driver: "mssql+pyodbc"
-#     host: "localhost" # "DESKTOP-LQU6G64\\SQLEXPRESS"
-#     db: "AM_DB"
-#     query: {
-#       "driver": "{ODBC Driver 17 for SQL Server}",
-#       "TrustServerCertificate": "yes",
-#       "Trusted_Connection": "yes",
-#       }
-
-# QUERIES:
-#   am:
-#     order:
-#       SELECT *
-#       FROM dbo.Orders
-
-
-
-
-
-# def get_data():
-#     pass
