@@ -1,0 +1,20 @@
+DATABASES: 
+  am:
+    # SQLAlchemy
+    drivername: "mssql+pyodbc"
+    host: "localhost\\SQLEXPRESS" # "DESKTOP-LQU6G64\\SQLEXPRESS"
+    database: "AM_DB"
+    query: {
+      "driver": "ODBC Driver 17 for SQL Server",
+      "TrustServerCertificate": "yes",
+      "Trusted_Connection": "yes",
+      }
+
+
+
+
+QUERIES:
+  am:
+    order:
+      SELECT *
+      FROM dbo.Orders
