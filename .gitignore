@@ -20,6 +20,9 @@ notes/
 # Ignore config file with sensitive info
 config.yaml
 
+
+LOG_DIR/
+
 # output files
 output/
 !output_masked/
