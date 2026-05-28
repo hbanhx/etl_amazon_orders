@@ -1,6 +1,6 @@
 import logging
 import os
-from extract import extract
+from extract.extract import extract
 # from transform import transform
 # from load import load_data
 import pandas as pd
