@@ -17,6 +17,8 @@ data/
 
 notes/
 
+logs/
+
 # Ignore config file with sensitive info
 config.yaml
 
