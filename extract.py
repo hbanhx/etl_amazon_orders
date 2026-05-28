@@ -20,6 +20,7 @@ def create_url(db_config):
 
     return connection_url
 
+
 # https://docs.sqlalchemy.org/en/20/tutorial/engine.html#tutorial-engine
 def get_engine(connection_url):
     engine = create_engine(connection_url)
@@ -31,20 +32,21 @@ def get_data():
     raw_data = {}
     for db_name, db_config in DATABASES.items():
         logging.info(f"Creating URL and engine for database: {db_name}")
+
+
         connection_url = create_url(db_config)
-        
+        engine = get_engine(connection_url)
+
+
         for query_name, sql_query in QUERIES[db_name].items():
-            engine = get_engine(connection_url)
+            logging.info(f"Running query '{query_name}' on '{db_name}'")
 
             with engine.connect() as conn:
                 raw_data[query_name] = pd.read_sql(sql_query, conn)
                 print(raw_data[query_name].info())
                 logging.info(f"Data extracted from: | database: {db_name} | query: {query_name}")
 
-
-
     return raw_data
-
 
 def extract():
     logging.info("Starting data extraction")

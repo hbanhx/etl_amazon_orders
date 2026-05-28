@@ -1,4 +1,4 @@
-“I den oprindelige løsning blev TXT‑filer importeret i Excel og transformeret i Power Query og DAX.
-I denne Python‑version har jeg re‑implementeret processen som en moderne ETL‑pipeline med SQL‑staging og Python‑transformationer.
-TXT‑filerne samles og maskeres manuelt i et Excel‑ark, hvorefter de indlæses i en SQL‑database som staging‑lag.
-Python henter data fra SQL, udfører transformationer og genererer de samme rapporter som den oprindelige løsning.”
+In the original setup, TXT files were imported into Excel and processed using Power Query and DAX.  
+In this Python-based redesign, I’ve rebuilt the workflow as a modern ETL pipeline with a SQL staging layer and Python-driven transformations.  
+The TXT files are manually consolidated and masked in an Excel sheet, then loaded into a SQL database as the staging environment.  
+Python extracts the staged data, performs the necessary transformations, and produces the same reports as the original Excel solution.
