@@ -1,24 +1,28 @@
 
 def prepare_amazon_order():
+
+    #  ["VAT % (Calculated)"]
     
 
     return
 
 
 
-def calculate_unit_price():
+def calculate_unit_price(data):
 
-    # DIVIDE( 'Amazon Order Files'[vat-exclusive-item-price]
-	# 		+ 'Amazon Order Files'[shipping-price]
-	# 		- 'Amazon Order Files'[shipping-tax] 
-	# 		+ 'Amazon Order Files'[gift-wrap-price]
-	# 		- 'Amazon Order Files'[gift-wrap-tax]
-	# 		- 'Amazon Order Files'[item-promotion-discount]
-	# 		- 'Amazon Order Files'[ship-promotion-discount]; 
-	# 	'Amazon Order Files'[quantity];
+    unit_price= (
+        data[vat-exclusive-item-price]
+        + data[shipping-price]
+        - data[shipping-tax]
+        + data[gift-wrap-price]
+        - data[gift-wrap-tax]
+        - data[item-promotion-discount]
+        - data[ship-promotion-discount]
+        ) / data[quantity]
+            
 
 
-    return
+    return data
 
 
 
@@ -33,18 +37,18 @@ def customer_no_vat_cat(vat_percent, buyer_tax_id):
 
 
 def valid_order():
-    # df["is_valid_amazon_de_order"] = (
-    # (df["is-amazon-invoiced"] == True)
-    # & (df["order-status"] == "Shipped")
-    # & (df["sales-channel"] == "Amazon.de")
-    # & (df["VAT % (Calculated)"].isin([0, 19]))
-    # & (df["Count Order lines"] == 1)
-    # & (df["currency"] == "EUR")
-    # & (~df["buyer-tax-registration-id"].str.contains(",", na=False))
-    # & (df["Sell-To Customer No."].notna())
+    # data["is_valid_amazon_de_order"] = (
+    # (data["is-amazon-invoiced"] == True)
+    # & (data["order-status"] == "Shipped")
+    # & (data["sales-channel"] == "Amazon.de")
+    # & (data["VAT % (Calculated)"].isin([0, 19]))
+    # & (data["Count Order lines"] == 1)
+    # & (data["currency"] == "EUR")
+    # & (~data["buyer-tax-registration-id"].str.contains(",", na=False))
+    # & (data["Sell-To Customer No."].notna())
     # )
 
-    # df["is_manual_order"] = ~df["is_valid_amazon_de_order"]
+    # data["is_manual_order"] = ~data["is_valid_amazon_de_order"]
 
 
     return
