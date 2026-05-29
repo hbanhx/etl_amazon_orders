@@ -4,6 +4,7 @@ from extract.extract import extract
 # from transform import transform
 # from load import load_data
 import pandas as pd
+from load.load_xlsx import load_xlsx
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
@@ -28,6 +29,10 @@ if __name__ == "__main__":
 
     raw_data = extract()
     print(raw_data.keys())
+
+
+    
+    load_xlsx(raw_data)
 
 
     logging.info("ETL pipeline completed")

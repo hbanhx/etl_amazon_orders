@@ -2,7 +2,9 @@ from dataclasses import dataclass
 
 @dataclass
 class salesOrder:
-    "Document Type No."
+
+    "Document Type" 
+    "No."
     "Sell-to Customer No."
     "Your Reference"
     "Order Date"
@@ -13,6 +15,7 @@ class salesOrder:
 
 @dataclass
 class salesOrderLine:
+
     "Document Type"
     "Document No."
     "Line No."
