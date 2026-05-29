@@ -6,8 +6,8 @@ from extract.extract import extract
 import pandas as pd
 from load.load_xlsx import load_xlsx
 
-pd.set_option('display.max_columns', None)
-pd.set_option('display.width', None)
+pd.set_option("display.max_columns", None)
+pd.set_option("display.width", None)
 
 LOG_DIR = "logs"
 os.makedirs(LOG_DIR, exist_ok=True)
