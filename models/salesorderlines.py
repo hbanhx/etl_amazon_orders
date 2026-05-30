@@ -12,6 +12,5 @@ class salesOrderLine:
     "Unit Price"
 
 
-    # def create_sales_order_lines():
-
-    # return sales_order_lines
+    def create_sales_order_lines(sol, row):
+        pass

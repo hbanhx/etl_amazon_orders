@@ -13,12 +13,6 @@ class salesOrderHeader:
     "External Document No."
 
 
-
-
-
-    # @classmethod
-    # def create_salesOrder(cls, ):
-
-    #     return salesOrder
-    
-
+    @classmethod
+    def create_salesOrder(cls, ):
+        pass
