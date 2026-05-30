@@ -60,6 +60,11 @@ def create_sales_order():
     return sales_order
 
 
+def create_sales_order_lines():
+
+    return sales_order_lines
+
+
 def transform(raw_data):
 
 
