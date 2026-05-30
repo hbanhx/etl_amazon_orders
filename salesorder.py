@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 @dataclass
-class salesOrder:
+class salesOrderHeader:
 
     "Document Type" 
     "No."
@@ -23,3 +23,14 @@ class salesOrderLine:
     "Location Code"
     "Quantity"
     "Unit Price"
+
+
+    @classmethod
+    def create_salesOrder(cls, ):
+
+        return salesOrder
+    
+
+    def create_sales_order_lines():
+
+        return sales_order_lines

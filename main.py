@@ -1,7 +1,7 @@
 import logging
 import os
 from extract.extract import extract
-# from transform import transform
+from transform.transform import transform
 # from load import load_data
 import pandas as pd
 from load.load_xlsx import load_xlsx
@@ -30,9 +30,9 @@ if __name__ == "__main__":
     raw_data = extract()
     print(raw_data.keys())
 
-
+    data = transform(raw_data)
     
-    load_xlsx(raw_data)
+    load_xlsx(data)
 
 
     logging.info("ETL pipeline completed")

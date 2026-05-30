@@ -1,10 +1,15 @@
+import pandas as pd
 
-def prepare_amazon_order(raw_data):
 
-    data = raw_data.copy()
+def extract_to_transform(raw_data):
 
-    data["vat_pct"] = round(data["item-tax"])
 
+    return raw_data["am_orders"]
+
+def prepare_amazon_order(am_order_data):
+
+    data = am_order_data.copy()
+    
     data["unit_price"]= (
         data["vat-exclusive-item-price"]
         + data["shipping-price"]
@@ -13,8 +18,11 @@ def prepare_amazon_order(raw_data):
         - data["gift-wrap-tax"]
         - data["item-promotion-discount"]
         - data["ship-promotion-discount"]
-        ) / data["quantity"].where(data["quantity"] != 0)
+        ) 
     
+    data["vat_pct"] = round(data["item-tax"] / data["unit_price"].where(data["quantity"] != 0), 2)
+
+
 
     return data
 
@@ -47,11 +55,21 @@ def valid_order(data):
 
     return data
 
+def create_sales_order():
+
+    return sales_order
+
 
 def transform(raw_data):
 
 
-    return raw_data
+    am_order_data = extract_to_transform(raw_data)
+
+    am_order_data = prepare_amazon_order(am_order_data)
+    print(type(am_order_data))
+
+
+    return am_order_data
 
 
 

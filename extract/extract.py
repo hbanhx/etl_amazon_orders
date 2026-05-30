@@ -51,6 +51,7 @@ def get_data():
 def extract():
     logging.info("Starting data extraction")
     raw_data = get_data()
+    print(type(raw_data))
 
     
     logging.info(f"Extraction complete: {len(raw_data)} datasets loaded")

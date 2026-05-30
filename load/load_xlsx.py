@@ -7,7 +7,7 @@ def load_xlsx(load_data):
 
     logging.info("Starting data load to Excel file")
 
-    df = load_data["orders"]
+    df = load_data
     dir = "output"
     name = "orders"
     print(df.dtypes)
@@ -18,6 +18,4 @@ def load_xlsx(load_data):
     path = os.path.join(dir_path, f"{name}.xlsx")
     df.to_excel(path, index=False)
 
-
-
-    logging.info("Data load complete")
+    logging.info("Data load to Excel complete")
