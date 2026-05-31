@@ -14,14 +14,15 @@ class SalesOrderHeader:
 
 
 
+
     # @classmethod
-    # def create_salesOrder(cls, ):
-        # return sales_order = cls(
-        #     documentType = "Order"
-        #     number: str
-        #     sellToCustomerNumber: str
-        #     externalDocumentNumber: str
-        #     orderDate: str
-        #     postingDate: str
-        #     vatRegistrationNo: str
-        # )
+    # def create_salesOrder(cls, row):
+    #     return salesOrder = cls(
+    #         documentType = "Order"
+    #         number: str
+    #         sellToCustomerNumber: str
+    #         externalDocumentNumber: str
+    #         orderDate: str
+    #         postingDate: str
+    #         vatRegistrationNo: str
+    #     )

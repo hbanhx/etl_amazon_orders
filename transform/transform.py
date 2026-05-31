@@ -1,8 +1,10 @@
 import pandas as pd
+from transform.mappings import Mappings
 
 
 def extract_to_transform(raw_data):
     return raw_data["am_orders"]
+
 
 def prepare_amazon_order(am_order_data):
 
@@ -37,21 +39,47 @@ def prepare_amazon_order(am_order_data):
 
     data["is_manual_order"] = ~data["is_valid_amazon_de_order"]
 
+    data = map_order_header(data)
+
 
     return data
+
+def map_order_header(am_order_data):
+
+    am_order_cols = am_order_data.copy()
+    am_order_cols = am_order_cols.rename(columns=Mappings.salesOrderHeader)
+    order_cols = []
+    for column in Mappings.salesOrderHeader.values():
+        if column in am_order_cols.columns:
+            order_cols.append(column)
+
+    header_df = am_order_cols.reindex(columns=order_cols)
+    print(header_df.info())
+    for row in header_df:
+        pass
+
+    return header_df
 
 
 def create_sales_order(am_order_data):
     # excel versino create the header, create an id (from am numberseries), store in am_dataframe
 
-    order_header = am_order_data.groupby(am_order_data["amazon-order-id"])
-    print(type(order_header))
-    print(order_header)
-    for index, row in order_header:
-        print(index, row)
+    sales_order_headers =  []
 
-    # return sales_order
+    order_header = am_order_data.groupby("amazon-order-id")
 
+
+    for index, am_order_id, row in order_header:
+        # print(index, row)
+        header = create_sales_order(row)
+
+        sales_order_headers.append(header)
+
+
+    return sales_order_headers
+
+def map_order_lines(am_order_data):
+    pass
 
 def create_sales_order_lines(am_order_data):
     # excel version: group.by am order Id, get the sales order header ID, create the lines store in lines_dataframe, load header_df to a sheet1, load lines to sheet2

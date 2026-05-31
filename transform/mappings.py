@@ -1,8 +1,9 @@
 class Mappings:
-
+    # Map AM to BC fields
     salesOrderHeader = {
         "amazon-order-id": "externalDocumentNumber",
-        "Sell-To Customer No.": "sellToCustomerNumber",
+        # "": "sellToCustomerNumber",
+        "buyer-company-name": "customerName",
         "purchase-date": "orderDate",
         "posting-date": "postingDate",
         "buyer-tax-registration-id": "vatRegistrationNo",
@@ -12,28 +13,5 @@ class Mappings:
         "sku": "itemNo",
         "quantity": "quantity",
         "unit_price": "unitPrice",
-        "location": "locationCode",
+        "location": "locationCode"
     }
-
-
-    
-    
-    # salesOrder = {
-    #     "Document Type No."
-    #     "Sell-to Customer No."
-    #     "Your Reference"
-    #     "Order Date"
-    #     "Posting Date"
-    #     "VAT Registration No."
-    #     "External Document No."
-    # }
-
-    # salesOrderLine = {
-    #     "Document Type"
-    #     "Document No."
-    #     "Line No."
-    #     "Type No."
-    #     "Location Code"
-    #     "Quantity"
-    #     "Unit Price"
-    # }
