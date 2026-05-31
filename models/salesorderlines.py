@@ -1,16 +1,16 @@
 from dataclasses import dataclass
 
 @dataclass
-class salesOrderLine:
+class SalesOrderLine:
+    documentType: str
+    documentNumber: str
+    lineNo: int
+    itemNo: str
+    locationCode: str
+    quantity: float
+    unitPrice: float
 
-    "Document Type"
-    "Document No."
-    "Line No."
-    "Type No."
-    "Location Code"
-    "Quantity"
-    "Unit Price"
 
 
-    def create_sales_order_lines(sol, row):
+    def create_sales_order_lines(cls, row):
         pass

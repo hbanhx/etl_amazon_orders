@@ -2,8 +2,6 @@ import pandas as pd
 
 
 def extract_to_transform(raw_data):
-
-
     return raw_data["am_orders"]
 
 def prepare_amazon_order(am_order_data):
@@ -40,49 +38,27 @@ def prepare_amazon_order(am_order_data):
     data["is_manual_order"] = ~data["is_valid_amazon_de_order"]
 
 
-
     return data
 
 
-
-def customer_no_vat_cat(vat_percent, buyer_tax_id):
-    if vat_percent is None and buyer_tax_id:
-        return "CUS1025197"   # EU B2B zero-rated
-    if vat_percent == 19:
-        return "CUS1002096"   # DE domestic VAT
-    return None
-
-
-
-def valid_order(data):
-
-    data["is_valid_amazon_de_order"] = (
-        (data["is-amazon-invoiced"] == True)
-        & (data["order-status"] == "Shipped")
-        & (data["sales-channel"] == "Amazon.de")
-        & (data["VAT % (Calculated)"].isin([0, 19]))
-        & (data["Count Order lines"] == 1)
-        & (data["currency"] == "EUR")
-        & (~data["buyer-tax-registration-id"].str.contains(",", na=False))
-        & (data["Sell-To Customer No."].notna())
-        )
-
-    data["is_manual_order"] = ~data["is_valid_amazon_de_order"]
-
-
-    return data
-
-def create_sales_order():
+def create_sales_order(am_order_data):
     # excel versino create the header, create an id (from am numberseries), store in am_dataframe
 
-    return sales_order
+    order_header = am_order_data.groupby(am_order_data["amazon-order-id"])
+    print(type(order_header))
+    print(order_header)
+    for index, row in order_header:
+        print(index, row)
+
+    # return sales_order
 
 
-def create_sales_order_lines():
+def create_sales_order_lines(am_order_data):
     # excel version: group.by am order Id, get the sales order header ID, create the lines store in lines_dataframe, load header_df to a sheet1, load lines to sheet2
-    # 
-
-    return sales_order_lines
+    for index, row in am_order_data.iterows():
+        pass
+        
+    # return sales_order_lines
 
 
 def transform(raw_data):
@@ -92,6 +68,9 @@ def transform(raw_data):
 
     am_order_data = prepare_amazon_order(am_order_data)
     print(type(am_order_data))
+
+    sales_order_header = create_sales_order(am_order_data)
+    # sales_order_lines = create_sales_order_lines()
 
 
     return am_order_data

@@ -1,18 +1,27 @@
 from dataclasses import dataclass
 
+from dataclasses import dataclass
+
 @dataclass
-class salesOrderHeader:
-
-    "Document Type" 
-    "No."
-    "Sell-to Customer No."
-    "Your Reference"
-    "Order Date"
-    "Posting Date"
-    "VAT Registration No."
-    "External Document No."
+class SalesOrderHeader:
+    documentType: str
+    number: str
+    sellToCustomerNumber: str
+    externalDocumentNumber: str
+    orderDate: str
+    postingDate: str
+    vatRegistrationNo: str
 
 
-    @classmethod
-    def create_salesOrder(cls, ):
-        pass
+
+    # @classmethod
+    # def create_salesOrder(cls, ):
+        # return sales_order = cls(
+        #     documentType = "Order"
+        #     number: str
+        #     sellToCustomerNumber: str
+        #     externalDocumentNumber: str
+        #     orderDate: str
+        #     postingDate: str
+        #     vatRegistrationNo: str
+        # )
