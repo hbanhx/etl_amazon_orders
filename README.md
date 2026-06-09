@@ -28,7 +28,7 @@ A Python ETL that:
     |   ├── output/              [ignored]  # Unmasked Excel output
     |   ├── output_masked/       # Masked Excel output
     |   ├── application/         # Fake BC API client
-    |   ├── builders/            # Build SalesHeader / SalesLine objects
+    |   ├── builders/            # Build SalesHeader / SalesLine objects / Sales Order Payloads
     |   ├── data/                [ignored]  # Raw Excel inputs
     |   ├── logs/                [ignored]  # ETL logs
     |   ├── mappings/            # Amazon → BC field mappings
