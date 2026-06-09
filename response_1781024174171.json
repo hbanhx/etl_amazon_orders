@@ -1,0 +1,56 @@
+[
+  {
+    "id": "0b8443ee-7381-4b2c-bf59-423745aec3e6",
+    "company_id": "fake_company",
+    "Document_Type": "Order",
+    "No": "AMSO-20221101-028-0029302-7519503",
+    "Sell_to_Customer_No": "CUS1002096",
+    "Sell_to_Customer_Name": "mtp Planungsgesellschaft für Medizintechnik mbH",
+    "External_Document_No": "028-0029302-7519503",
+    "Order_Date": "2022-11-01",
+    "Posting_Date": "2022-11-04",
+    "VAT_Registration_No": "DE253902565",
+    "Currency_Code": "EUR",
+    "documentLines": [
+      {
+        "id": "5b1db714-e8b6-4a3d-bf1a-619bf555481f",
+        "order_id": "0b8443ee-7381-4b2c-bf59-423745aec3e6",
+        "Document_Type": "Order",
+        "Document_No": "AMSO-20221101-028-0029302-7519503",
+        "Type": "Item",
+        "Line_No": 1000,
+        "No": "121412",
+        "Location_Code": "AMAZON.DE",
+        "Quantity": 1,
+        "Unit_Price": 73.11
+      }
+    ]
+  },
+  {
+    "id": "8a4bc7ab-08ec-4392-9395-c7d779d589a2",
+    "company_id": "fake_company",
+    "Document_Type": "Order",
+    "No": "AMSO-20221101-028-0803785-5313135",
+    "Sell_to_Customer_No": "CUS1002096",
+    "Sell_to_Customer_Name": "",
+    "External_Document_No": "028-0803785-5313135",
+    "Order_Date": "2022-11-01",
+    "Posting_Date": "2022-11-03",
+    "VAT_Registration_No": "",
+    "Currency_Code": "EUR",
+    "documentLines": [
+      {
+        "id": "8cd1e9eb-62af-4f4b-8c44-8799d28b0fce",
+        "order_id": "8a4bc7ab-08ec-4392-9395-c7d779d589a2",
+        "Document_Type": "Order",
+        "Document_No": "AMSO-20221101-028-0803785-5313135",
+        "Type": "Item",
+        "Line_No": 1000,
+        "No": "21367",
+        "Location_Code": "AMAZON.DE",
+        "Quantity": 1,
+        "Unit_Price": 121.85
+      }
+    ]
+  }
+]
