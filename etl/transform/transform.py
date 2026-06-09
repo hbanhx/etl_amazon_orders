@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 import logging
 from mappings.mappings import Mappings
-from builders.build_sales_orders import build_sales_header_df, build_sales_line_df
+from builders.build_sales_headers_df import build_sales_header_df
+from builders.build_sales_lines_df import build_sales_line_df
+
 
 
 def extract_to_transform(raw_data):

@@ -1,5 +1,5 @@
 import logging
-from builders.build_sales_orders import build_sales_order_payloads
+from builders.build_sales_order_payloads import build_sales_order_payloads
 from application.fake_bc_client import post_sales_order_to_bc, post_sales_order_line_to_bc
 
 
@@ -23,6 +23,7 @@ def load_bc(headers_df, lines_df):
         # Create lines in BC for this returned order_id
         for line_payload in line_payloads:
             logging.debug(f"Creating line for order {order_id}: {line_payload}")
+            
             post_sales_order_line_to_bc(order_id, line_payload)
 
         logging.debug(f"Finished sending lines for order {order_id}")

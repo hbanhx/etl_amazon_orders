@@ -34,7 +34,6 @@ def create_line(company_id: str, order_id: str, body: dict):
     line = {
         "id": line_id,
         "order_id": order_id,
-        "company_id": company_id,
         **body
     }
 
