@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+
+# VS Code
+.vscode/
+
+# Data files (raw data should not be in Git)
+data/
+*.csv
+*.xlsx
+
+*.txt
+
+notes/
+
+logs/
+
+# Ignore config file with sensitive info
+config.yaml
+
+
+LOG_DIR/
+
+# output files
+output/
+!output_masked/
+!am_orders_df_masked.xlsx
+!flagged_data_masked.xlsx
+!sales_headers_df_masked.xlsx
+!sales_lines_df_masked.xlsx
