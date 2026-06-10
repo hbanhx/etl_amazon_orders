@@ -37,6 +37,4 @@ if __name__ == "__main__":
     load_xlsx(load_dfs)
     load_sql(sales_headers_df, sales_lines_df)
 
-
-
     logging.info("ETL pipeline completed")
