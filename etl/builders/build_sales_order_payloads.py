@@ -1,7 +1,12 @@
 import pandas as pd
+from pandas import DataFrame
 
 
-def build_sales_order_payloads(headers_df, lines_df):
+def build_sales_order_payloads(
+        headers_df: DataFrame, 
+        lines_df: DataFrame
+        ) -> list[tuple]:
+    
     # Build list of tuple payloads
     sales_order_payloads = []
 

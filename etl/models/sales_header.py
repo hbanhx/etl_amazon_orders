@@ -1,5 +1,7 @@
 import pandas as pd
 from dataclasses import dataclass
+from pandas import Series
+
 # https://learn.microsoft.com/en-us/dynamics365/business-central/application/base-application/table/microsoft.sales.document.sales-header
 
 
@@ -16,7 +18,7 @@ class SalesHeader:
     Currency_Code: str
 
     @classmethod
-    def from_row(cls, row):
+    def from_row(cls, row: Series) -> "SalesHeader":
 
         SalesHeader = cls(
             Document_Type = "Order",

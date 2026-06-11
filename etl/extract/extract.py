@@ -1,8 +1,10 @@
-import os
-from sqlalchemy import create_engine, URL
-import yaml
 import logging
+import os
+import yaml
 import pandas as pd
+from pandas import DataFrame
+from sqlalchemy import create_engine, URL
+# https://docs.sqlalchemy.org/en/20/tutorial/engine.html#tutorial-engine
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "config.yaml"))
@@ -13,25 +15,18 @@ with open(CONFIG_PATH, "r") as f:
 DATABASES = CONFIG["DATABASES"]
 QUERIES = CONFIG["QUERIES"]
 
+logging.basicConfig(level=logging.INFO)
 
-def create_url(db_config):
-    connection_url = URL.create(
+def create_url(db_config: dict) -> URL:
+    return URL.create(
         drivername= db_config["drivername"],
         host= db_config["host"],
         database= db_config["database"],
         query= db_config["query"]
     )
+    # return connection_url
 
-    return connection_url
-
-
-# https://docs.sqlalchemy.org/en/20/tutorial/engine.html#tutorial-engine
-def get_engine(connection_url):
-    engine = create_engine(connection_url)
-    return engine
-
-
-def get_data(include_dbs):
+def get_data(include_dbs: list) -> dict:
 
     raw_data = {}
     for db_name, db_config in DATABASES.items():
@@ -43,7 +38,7 @@ def get_data(include_dbs):
         logging.info(f"Creating URL and engine for database: {db_name}")
 
         connection_url = create_url(db_config)
-        engine = get_engine(connection_url)
+        engine = create_engine(connection_url)
 
         try:
             with engine.connect() as conn:
@@ -62,9 +57,11 @@ def get_data(include_dbs):
 
     return raw_data
 
-def extract():
+
+def extract() -> dict[str, DataFrame]:
     logging.info("Starting data extraction")
 
+    # List of databases to extract from
     extract_dbs = ["AM_DB"]
     raw_data = get_data(include_dbs=extract_dbs)
 

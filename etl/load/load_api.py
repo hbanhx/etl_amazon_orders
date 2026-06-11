@@ -1,9 +1,10 @@
 import logging
+from pandas import DataFrame
 from builders.build_sales_order_payloads import build_sales_order_payloads
 from application.fake_bc_client import post_sales_order_to_bc, post_sales_order_line_to_bc
 
 
-def load_bc(headers_df, lines_df):
+def load_bc(headers_df: DataFrame, lines_df: DataFrame) -> None:
     logging.info("Starting load of sales orders to Fake BC")
 
     # Build payloads (list of tuples for each order: (header_payload, [line_payloads]))

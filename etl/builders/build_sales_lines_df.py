@@ -1,9 +1,10 @@
 import logging
 import pandas as pd
+from pandas import DataFrame
 from models.sales_line import SalesLine
 
 
-def build_sales_line_df(lines_df):
+def build_sales_line_df(lines_df: DataFrame) -> DataFrame:
 
     logging.info("Creating SalesLine objects")
 

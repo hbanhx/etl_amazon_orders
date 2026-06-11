@@ -1,9 +1,10 @@
 import logging
 import pandas as pd
+from pandas import DataFrame
 from models.sales_header import SalesHeader
 
 
-def build_sales_header_df(header_df):
+def build_sales_header_df(header_df: DataFrame) -> DataFrame:
 
     logging.info("Creating SalesHeader objects")
 

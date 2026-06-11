@@ -2,14 +2,10 @@ import logging
 import os
 from extract.extract import extract
 from transform.transform import transform
-import pandas as pd
 from load.load_xlsx import load_xlsx
 from load.load_sql import load_sql
 from load.load_api import load_bc
 
-
-pd.set_option("display.max_columns", None)
-pd.set_option("display.width", None)
 
 LOG_DIR = "logs"
 os.makedirs(LOG_DIR, exist_ok=True)

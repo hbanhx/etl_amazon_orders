@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pandas import Series
 
 # https://learn.microsoft.com/en-us/dynamics365/business-central/application/base-application/table/microsoft.sales.document.sales-line
 
@@ -15,7 +16,7 @@ class SalesLine:
 
 
     @classmethod
-    def from_row(cls, line_no, row):
+    def from_row(cls, line_no: int, row: Series) -> "SalesLine":
         SalesLine = cls(
             Document_Type = "Order",
             Document_No = row["Document_No"],

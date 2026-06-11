@@ -1,7 +1,8 @@
 import logging
 import os
+from pandas import DataFrame
 
-def load_xlsx(load_dfs):
+def load_xlsx(load_dfs: dict[str, dict[str, DataFrame]]) -> None:
 
     logging.info("Starting data load to Excel")
 

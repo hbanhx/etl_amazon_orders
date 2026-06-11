@@ -56,5 +56,3 @@ def get_order(company_id: str, order_id: str):
     for order in SALESORDERS.values():
         if order["company_id"] == company_id and order["id"] == order_id:
             return order
-# fake_company
-# f290ca5b-b424-4e41-a743-9d44015b5852

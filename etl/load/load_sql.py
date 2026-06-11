@@ -3,6 +3,9 @@ from sqlalchemy import create_engine, URL
 import yaml
 import logging
 import pandas as pd
+from pandas import DataFrame
+
+# https://docs.sqlalchemy.org/en/20/tutorial/engine.html#tutorial-engine
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "config.yaml"))
@@ -14,7 +17,7 @@ DATABASES = CONFIG["DATABASES"]
 QUERIES = CONFIG["QUERIES"]
 
 
-def create_url(db_config):
+def create_url(db_config: dict) -> URL:
     connection_url = URL.create(
         drivername= db_config["drivername"],
         host= db_config["host"],
@@ -25,13 +28,7 @@ def create_url(db_config):
     return connection_url
 
 
-# https://docs.sqlalchemy.org/en/20/tutorial/engine.html#tutorial-engine
-def get_engine(connection_url):
-    engine = create_engine(connection_url)
-    return engine
-
-
-def load_data(include_dbs, df, table_name):
+def load_data(include_dbs: list, df: DataFrame, table_name: str) -> None:
     
     for db_name, db_config in DATABASES.items():
         
@@ -42,7 +39,7 @@ def load_data(include_dbs, df, table_name):
         logging.info(f"Creating URL and engine for SQL: | database: {db_name}")
 
         connection_url = create_url(db_config)
-        engine = get_engine(connection_url)
+        engine = create_engine(connection_url)
 
         logging.info(f"Loading table '{table_name}' into SQL: | database: {db_name}")
         
@@ -59,7 +56,7 @@ def load_data(include_dbs, df, table_name):
             engine.dispose()
 
 
-def load_sql(sales_headers_df, sales_lines_df):
+def load_sql(sales_headers_df: DataFrame, sales_lines_df: DataFrame) -> None:
     logging.info("Starting data load to SQL database")
 
     load_to_dbs = ["GS_DB"]
